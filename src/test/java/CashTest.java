@@ -1,3 +1,5 @@
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Conditional;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -7,6 +9,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+
+import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.disappear;
 import static com.codeborne.selenide.Selectors.byText;
@@ -31,7 +35,7 @@ public class CashTest {
 //        options.addArguments("--headless");
 //        driver = new ChromeDriver(options);
 //    }
-     //перед каждым тестом открываем новую версию хрома, чтобы не переходили какие-то ранее запущенные действия
+    //перед каждым тестом открываем новую версию хрома, чтобы не переходили какие-то ранее запущенные действия
 
 
     @Test
@@ -47,10 +51,9 @@ public class CashTest {
         $(byText("Владелец")).parent().setValue("Марина");//ввести имя кардхолдера
         $(byText("CVC/CVV")).parent().setValue("111");//ввести cvc
         $(byText("Продолжить")).parent().parent().click();//нажать продолжить
-        String expected = "Операция одобрена банком";
-        String actual = $(By.cssSelector("[notification__content]")).getText(); //определить актуальное сообщение
-        assertEquals(expected, actual);
-
+        $(".notification__content")
+                .shouldBe(Condition.visible, Duration.ofSeconds(25))
+                .shouldHave(Condition.exactText("Операция одобрена банком"));
     }
 
 }
@@ -140,7 +143,6 @@ public class CashTest {
 //                .shouldBe(Condition.visible);
 //    }
 //}
-
 
 
 //    Покупка туров. Позитивный сценарий (карта валидная, статус APPROVED)
