@@ -41,11 +41,11 @@ public class CashTest {
         Configuration.holdBrowserOpen = true;
         open("http://localhost:8080/");
         $(byText("Купить")).parent().parent().click();
-        $(byText("Номер карты")).parent().sendKeys("4444 4444 4444 4441");//ввести номер валидной карты
-        $(byText("Месяц")).parent().sendKeys("12");//ввести месяц
-        $(byText("Год")).parent().sendKeys("23");//ввести год
-        $(byText("Владелец")).parent().sendKeys("Марина");//ввести имя кардхолдера
-        $(byText("CVC/CVV")).parent().sendKeys("111");//ввести cvc
+        $(byText("Номер карты")).parent().setValue("4444 4444 4444 4441");//ввести номер валидной карты
+        $(byText("Месяц")).parent().setValue("12");//ввести месяц
+        $(byText("Год")).parent().setValue("23");//ввести год
+        $(byText("Владелец")).parent().setValue("Марина");//ввести имя кардхолдера
+        $(byText("CVC/CVV")).parent().setValue("111");//ввести cvc
         $(byText("Продолжить")).parent().parent().click();//нажать продолжить
         String expected = "Операция одобрена банком";
         String actual = $(By.cssSelector("[notification__content]")).getText(); //определить актуальное сообщение
