@@ -19,30 +19,31 @@ import static com.codeborne.selenide.Selenide.open;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CashTest {
-//    private WebDriver driver;
-//
-//    //поле под вебдрайвер с переменной driver, которую мы будем использовать для обращения к драйверу
+    private WebDriver driver;
+
+    //поле под вебдрайвер с переменной driver, которую мы будем использовать для обращения к драйверу
 //    @BeforeAll //устанавливаем драйвер хрома, прописываем путь к нему в этом проекте
 //    static void SetUpAll() {
 //        System.setProperty("web-driver.chrome.driver", "driver/chromedriver.exe");
 //    }
-//
-//    @BeforeEach
-//    void setUpChrome() {
-//        ChromeOptions options = new ChromeOptions();
-//        options.addArguments("--disable-dev-shm-usage");
-//        options.addArguments("--no-sandbox");
-//        options.addArguments("--headless");
-//        driver = new ChromeDriver(options);
-//    }
+
+    @BeforeEach
+    void setUpChrome() {
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--headless");
+        driver = new ChromeDriver(options);
+    }
     //перед каждым тестом открываем новую версию хрома, чтобы не переходили какие-то ранее запущенные действия
 
 
     @Test
     @DisplayName("1.Positive. Valid card, status APPROVED")
     void ShouldBeCorrect() {
-        //driver.get("http://localhost:8080/");
+
         Configuration.holdBrowserOpen = true;
+        //driver.get("http://localhost:8080/");
         open("http://localhost:8080/");
         $(byText("Купить")).parent().parent().click();
         $(byText("Номер карты")).parent().setValue("4444 4444 4444 4441");//ввести номер валидной карты
