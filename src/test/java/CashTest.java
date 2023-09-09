@@ -1,3 +1,4 @@
+import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -37,6 +38,7 @@ public class CashTest {
     @DisplayName("1.Positive. Valid card, status APPROVED")
     void ShouldBeCorrect() {
         //driver.get("http://localhost:8080/");
+        Configuration.holdBrowserOpen = true;
         open("http://localhost:8080/");
         $(byText("Купить")).parent().parent().click();
         $(byText("Номер карты")).parent().sendKeys("4444 4444 4444 4441");//ввести номер валидной карты
@@ -52,6 +54,23 @@ public class CashTest {
     }
 
 }
+
+//
+//    @Test
+//    void shouldBook() {
+//        Configuration.holdBrowserOpen = true;
+//        open("http://localhost:9999/");
+//        $("[data-test-id='city'] input").setValue("Москва");
+//        $("[data-test-id='date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.DELETE);
+//        $("[data-test-id='date'] input").setValue(bookDate);
+//        $("[data-test-id='name'] input").setValue("Тигр Евфратыч");
+//        $("[data-test-id='phone'] input").setValue("+79128800000");
+//        $("[data-test-id='agreement']").click();
+//        $("button.button").click();
+//        $(".notification__content")
+//                .shouldBe(Condition.visible, Duration.ofSeconds(25))
+//                .shouldHave(Condition.exactText("Встреча успешно забронирована на " + bookDate));
+//    }
 //    @Test
 //    @DisplayName("Should successfully login with active registered user")
 //    void shouldSuccessfulLoginIfRegisteredActiveUser() {
