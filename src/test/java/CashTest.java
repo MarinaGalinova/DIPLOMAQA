@@ -14,12 +14,13 @@ import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.disappear;
 import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CashTest {
-    private WebDriver driver;
+    //private WebDriver driver;
 
     //поле под вебдрайвер с переменной driver, которую мы будем использовать для обращения к драйверу
 //    @BeforeAll //устанавливаем драйвер хрома, прописываем путь к нему в этом проекте
@@ -46,7 +47,7 @@ public class CashTest {
         //driver.get("http://localhost:8080/");
         open("http://localhost:8080/");
         $(byText("Купить")).parent().parent().click();
-        $(byText("Номер карты")).parent().setValue("4444 4444 4444 4441");//ввести номер валидной карты
+        $(byText("0000 0000 0000 0000")).setValue("4444 4444 4444 4441");//ввести номер валидной карты
         $(byText("Месяц")).parent().setValue("12");//ввести месяц
         $(byText("Год")).parent().setValue("23");//ввести год
         $(byText("Владелец")).parent().setValue("Марина");//ввести имя кардхолдера
