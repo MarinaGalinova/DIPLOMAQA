@@ -27,14 +27,14 @@ public class CashTest {
 //        System.setProperty("web-driver.chrome.driver", "driver/chromedriver.exe");
 //    }
 
-    @BeforeEach
-    void setUpChrome() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--headless");
-        driver = new ChromeDriver(options);
-    }
+//    @BeforeEach
+//    void setUpChrome() {
+//        ChromeOptions options = new ChromeOptions();
+//        options.addArguments("--disable-dev-shm-usage");
+//        options.addArguments("--no-sandbox");
+//        options.addArguments("--headless");
+//        driver = new ChromeDriver(options);
+//    }
     //перед каждым тестом открываем новую версию хрома, чтобы не переходили какие-то ранее запущенные действия
 
 
