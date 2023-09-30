@@ -47,7 +47,6 @@ dependencies {
     //testImplementation group: 'org.slf4j', name: 'slf4j-simple', version: '2.0.0-alpha1' //добавила из-за ошибки slf4
 }
 
-;;
 test {
     useJUnitPlatform()
     systemProperty "db.user", System.getProperty("db.user", "app")
