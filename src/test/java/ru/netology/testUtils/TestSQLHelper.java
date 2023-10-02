@@ -10,7 +10,7 @@ public class TestSQLHelper {
 //    private static String dbPass = System.getProperty("db.pass");
 
     //private static final String dbUrl = "jdbc:postgresql://127.0.0.1:5432/app"; //для запуска из Idea
-   private static final String dbUrl = "jdbc:mysql://127.0.0.1:3306/app"; //для запуска из Idea
+   private static final String dbUrl = "jdbc:mysql://localhost:3306/app"; //для запуска из Idea
     private static final String dbUser = "app";
     private static final String dbPass = "pass";
 

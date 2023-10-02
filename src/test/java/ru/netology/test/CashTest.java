@@ -17,12 +17,12 @@ import static com.codeborne.selenide.Selenide.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CashTest {
-    @BeforeAll
-    static void setUpAll() throws SQLException {
-
-        TestSQLHelper.cleanTables();
-        SelenideLogger.addListener("allure", new AllureSelenide());
-    }
+//    @BeforeAll
+//    static void setUpAll() throws SQLException {
+//
+//        TestSQLHelper.cleanTables();
+//        SelenideLogger.addListener("allure", new AllureSelenide());
+//    }
 
     @AfterAll
     static void tearDownAll() {
@@ -64,8 +64,9 @@ public class CashTest {
         $("[placeholder='999']").setValue("123").click();//год
         $(byText("Продолжить")).parent().parent().click();//нажать продолжить
         $$(".notification__content").get(1)
-                .shouldBe(Condition.visible, Duration.ofSeconds(25))
+                .shouldBe(Condition.visible, Duration.ofSeconds(5))
                 .shouldHave(Condition.exactText("Ошибка! Банк отказал в проведении операции."));
+        assertEquals("DECLINED", TestSQLHelper.getOperationStatus(TestSQLHelper.getPayTable()));
     }
     @Test
     @DisplayName("3.Negative. Other card number, status DECLINED")
