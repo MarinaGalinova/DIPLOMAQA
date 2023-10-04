@@ -28,15 +28,16 @@ public class CashTest {
         TestSQLHelper.cleanTables();
         open("http://localhost:8080/");
     }
-//    @BeforeAll
-//    static void setUpAll() {
-//        SelenideLogger.addListener("allure", new AllureSelenide());
-//    }
-//
-//    @AfterAll
-//    static void tearDownAll() {
-//        SelenideLogger.removeListener("allure");
-//    }
+
+    @BeforeAll
+    static void setUpAll() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+    }
+
+    @AfterAll
+    static void tearDownAll() {
+        SelenideLogger.removeListener("allure");
+    }
 
     @Test
     @DisplayName("1.Positive API. Valid card, status APPROVED")
@@ -96,15 +97,17 @@ public class CashTest {
         paymentPage.fillData(expiredCard);
         assertTrue(paymentPage.inputInvalidIsVisible(), "Должен показывать сообщение о том, что поле не может быть пустым");
     }
-        @Test
+
+    @Test
     @DisplayName("7.Negative UI. One Digit month field, interlinear message visible")
     void ShouldntBeCorrectOneDigitMonth() {
-            Cards expiredCard = DataGenerator.getInvalidOneDigitMonthField();
-            StartPage startPage = new StartPage();
-            PaymentPage paymentPage = startPage.goToPaymentPage();
-            paymentPage.fillData(expiredCard);
-            assertTrue(paymentPage.inputInvalidIsVisible(), "Должен показывать сообщение о том, что формат неверный");
+        Cards expiredCard = DataGenerator.getInvalidOneDigitMonthField();
+        StartPage startPage = new StartPage();
+        PaymentPage paymentPage = startPage.goToPaymentPage();
+        paymentPage.fillData(expiredCard);
+        assertTrue(paymentPage.inputInvalidIsVisible(), "Должен показывать сообщение о том, что формат неверный");
     }
+
     @Test
     @DisplayName("8.Negative UI. Double Zero month field, interlinear message visible")
     void ShouldntBeCorrectDoubleZeroMonth() {
@@ -125,15 +128,16 @@ public class CashTest {
         assertTrue(paymentPage.inputInvalidIsVisible(), "Должен показывать сообщение о том, что срок действия карты неверный");
     }
 
-        @Test
+    @Test
     @DisplayName("10.Negative UI. Empty year field, interlinear message visible")
     void ShouldntBeCorrectEmptyYear() {
-            Cards expiredCard = DataGenerator.getInvalidEmptyYearField();
-            StartPage startPage = new StartPage();
-            PaymentPage paymentPage = startPage.goToPaymentPage();
-            paymentPage.fillData(expiredCard);
-            assertTrue(paymentPage.inputInvalidIsVisible(), "Должен показывать сообщение о том, что поле не может быть пустым");
+        Cards expiredCard = DataGenerator.getInvalidEmptyYearField();
+        StartPage startPage = new StartPage();
+        PaymentPage paymentPage = startPage.goToPaymentPage();
+        paymentPage.fillData(expiredCard);
+        assertTrue(paymentPage.inputInvalidIsVisible(), "Должен показывать сообщение о том, что поле не может быть пустым");
     }
+
     @Test
     @DisplayName("11.Negative UI. One Digit year field, interlinear message visible")
     void ShouldntBeCorrectOneDigitYear() {
@@ -143,6 +147,7 @@ public class CashTest {
         paymentPage.fillData(expiredCard);
         assertTrue(paymentPage.inputInvalidIsVisible(), "Должен показывать сообщение о том, что формат неверный");
     }
+
     @Test
     @DisplayName("12.Negative UI. Less than 16 digits card number, interlinear message visible")
     void ShouldntBeCorrectLess16DigitsCardNumber() {
@@ -152,6 +157,7 @@ public class CashTest {
         paymentPage.fillData(expiredCard);
         assertTrue(paymentPage.inputInvalidIsVisible(), "Должен показывать сообщение об ошибке Неверный формат");
     }
+
     @Test
     @DisplayName("13.Negative UI. Empty card number field, interlinear message visible")
     void ShouldntBeCorrectEmptyCardNumber() {
@@ -161,6 +167,7 @@ public class CashTest {
         paymentPage.fillData(expiredCard);
         assertTrue(paymentPage.inputInvalidIsVisible(), "Должен показывать сообщение об ошибке Поле не может быть пустым");
     }
+
     @Test
     @DisplayName("14.Negative UI. Empty cardholder field, interlinear message visible")
     void ShouldntBeCorrectEmptyCardholder() {
@@ -170,6 +177,7 @@ public class CashTest {
         paymentPage.fillData(expiredCard);
         assertTrue(paymentPage.inputInvalidIsVisible(), "Должен показывать сообщение об ошибке Поле не может быть пустым");
     }
+
     @Test
     @DisplayName("15.Negative UI. Cyrillic cardholder field, interlinear message visible")
     void ShouldntBeCorrectCyrillicCardholder() {
@@ -179,6 +187,7 @@ public class CashTest {
         paymentPage.fillData(expiredCard);
         assertTrue(paymentPage.inputInvalidIsVisible(), "Должен показывать сообщение об ошибке Поле должно быть заполнено на латинице");
     }
+
     @Test
     @DisplayName("16.Negative UI. Empty CVC field, interlinear message visible")
     void ShouldntBeCorrectEmptyCVC() {
@@ -188,6 +197,7 @@ public class CashTest {
         paymentPage.fillData(expiredCard);
         assertTrue(paymentPage.inputInvalidIsVisible(), "Должен показывать сообщение об ошибке Поле не может быть пустым");
     }
+
     @Test
     @DisplayName("17.Negative UI. Two digits CVC field, interlinear message visible")
     void ShouldntBeCorrect2DigitsCVC() {

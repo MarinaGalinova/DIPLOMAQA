@@ -24,7 +24,6 @@ allure {
 }
 
 repositories {
-
     mavenCentral()
 }
 
