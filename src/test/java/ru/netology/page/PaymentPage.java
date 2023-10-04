@@ -3,6 +3,7 @@ package ru.netology.page;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import ru.netology.data.Cards;
+
 import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.exactText;
@@ -13,8 +14,8 @@ import static com.codeborne.selenide.Selenide.$$;
 
 public class PaymentPage {
     private SelenideElement heading = $(byText("Купить")).parent().parent();
-    private SelenideElement cardNumberField =  $("[placeholder='0000 0000 0000 0000']");
-    private SelenideElement monthField =  $("[placeholder='08']");
+    private SelenideElement cardNumberField = $("[placeholder='0000 0000 0000 0000']");
+    private SelenideElement monthField = $("[placeholder='08']");
     private SelenideElement yearField = $("[placeholder='22']");
     private SelenideElement ownerField = $$(".input__control").get(3);
     private SelenideElement cvcField = $("[placeholder='999']");
@@ -43,6 +44,7 @@ public class PaymentPage {
     public void notificationErrorIsVisible() {
         notificationError.shouldBe(Condition.visible, Duration.ofSeconds(25));
     }
+
     public boolean inputInvalidIsVisible() {
         return inputInvalid.isDisplayed();
     }
