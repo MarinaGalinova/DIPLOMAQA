@@ -23,7 +23,7 @@ public class CreditTest {
     @BeforeEach
     public void openPage() throws SQLException {
         TestSQLHelper.cleanTables();
-        open("http://localhost:8080/");
+        open(System.getProperty("test.host"));
     }
 
     @BeforeAll

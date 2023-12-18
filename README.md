@@ -25,9 +25,9 @@ java "-Dspring.datasource.url=jdbc:mysql://localhost:3306/app" -jar artifacts/aq
 java "-Dspring.datasource.url=jdbc:postgresql://localhost:5432/app" -jar artifacts/aqa-shop.jar
 
  
- 4.**Для запуска авто-тестов необходимо открыть новую вкладку в теминале и ввести команду:**
- - для **MySQL**: `gradlew clean test -Ddb.url=jdbc:mysql://localhost:3306/app`
- - для **PostgreSQL**: `gradlew clean test -Ddb.url=jdbc:postgresql://localhost:5432/app`'
+ 4.**Для запуска авто-тестов необходимо открыть новую вкладку в терминале и ввести команду:**
+ - для **MySQL**: `./gradlew clean test "-Ddb.url=jdbc:mysql://localhost:3306/app"`
+ - для **PostgreSQL**: `./gradlew clean test "-Ddb.url=jdbc:postgresql://localhost:5432/app"`
  
  5.**Для создания отчета Allure ввести в терминале команду:**
  `gradlew allureServe`

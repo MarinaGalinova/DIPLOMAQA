@@ -26,7 +26,7 @@ public class CashTest {
     @BeforeEach
     public void openPage() throws SQLException {
         TestSQLHelper.cleanTables();
-        open("http://localhost:8080/");
+        open(System.getProperty("test.host"));
     }
 
     @BeforeAll
@@ -55,7 +55,8 @@ public class CashTest {
         StartPage startPage = new StartPage();
         PaymentPage paymentPage = startPage.goToPaymentPage();
         paymentPage.fillData(declinedCard);
-        paymentPage.notificationOkIsVisible();//пауза, для того, чтобы БД успела ответить
+        paymentPage.notificationErrorIsVisible();
+//        paymentPage.notificationOkIsVisible();
         assertEquals("DECLINED", TestSQLHelper.getOperationStatus("payment_entity"));
     }
 
