@@ -40,7 +40,7 @@ public class CashTest {
     }
 
     @Test
-    @DisplayName("1.Positive API. Valid card, status APPROVED")
+    @DisplayName("1.Positive UI. Valid card, status APPROVED")
     void ShouldBeCorrect() {
         StartPage startPage = new StartPage();
         PaymentPage paymentPage = startPage.goToPaymentPage();
@@ -50,7 +50,7 @@ public class CashTest {
     }
 
     @Test
-    @DisplayName("2.Negative API. Invalid card, status DECLINED")
+    @DisplayName("2.Negative UI. Invalid card, status DECLINED")
     void ShouldntBeCorrect() {
         StartPage startPage = new StartPage();
         PaymentPage paymentPage = startPage.goToPaymentPage();
@@ -61,7 +61,7 @@ public class CashTest {
     }
 
     @Test
-    @DisplayName("3.Negative API. Other card number, empty status")
+    @DisplayName("3.Negative UI. Other card number, empty status")
     void ShouldntBeCorrectOtherCardNumber() {
         StartPage startPage = new StartPage();
         PaymentPage paymentPage = startPage.goToPaymentPage();
